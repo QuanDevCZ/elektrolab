@@ -367,3 +367,6 @@ in AU. New guide page after "coulomb", chapter 1 part 3/3, marked "z hodiny, mim
   Vzorec → Příklady → Zpět/Další (.guide is display: contents on ≤ 720 px). Desktop unchanged.
 - 2026-11-01 (3): changing chapter (Další, Zpět, chapter dots, arrow keys) jumps the page to the top
   (instant, window.scrollTo in story.go) — on mobile the whole page scrolls, not just the card.
+- 2026-11-01 (4): shipped. Repo github.com/QuanDevCZ/elektrolab, live at
+  https://quandevcz.github.io/elektrolab/ (GitHub Pages, main / root). lessons/ is gitignored (teacher PDFs
+  stay local). AI tutor chatbot (Groq + Cloudflare Worker) was planned and shelved by the user.
