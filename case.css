@@ -1,0 +1,75 @@
+/* Elektrolab — případová studie. Stejné barvy a písma jako aplikace (papír + tmavé obrázky). */
+
+:root {
+  --paper: #f3eee3;
+  --paper-2: #ebe4d4;
+  --ink: #1d1b17;
+  --ink-2: #3a362e;
+  --muted: #736a59;
+  --rule: #d3c9b4;
+  --select: #e0a82e;
+  --vp: #0d0f13;
+  --serif: 'Source Serif 4', Georgia, serif;
+  --sans: 'IBM Plex Sans', system-ui, sans-serif;
+  --mono: 'IBM Plex Mono', ui-monospace, monospace;
+  --gutter: 16px;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.6 var(--sans); }
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+
+.top {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 14px var(--gutter); border-bottom: 1px solid var(--rule);
+  max-width: 1120px; margin: 0 auto;
+}
+.brand { font: 600 20px var(--serif); text-decoration: none; }
+.open { font: 600 14px var(--sans); text-decoration: none; background: var(--ink); color: var(--paper); padding: 9px 16px; border-radius: 6px; }
+
+main { max-width: 1120px; margin: 0 auto; padding: 0 var(--gutter) 64px; }
+section { padding: 48px 0; border-bottom: 1px solid var(--rule); }
+
+.kicker { font: 500 13px var(--mono); color: var(--muted); margin: 0 0 12px; }
+h1 { font: 600 clamp(32px, 5vw, 56px)/1.05 var(--serif); letter-spacing: -0.02em; margin: 0; max-width: 18ch; }
+.lead { font: 400 clamp(18px, 2vw, 21px)/1.5 var(--serif); color: var(--ink-2); max-width: 62ch; margin: 20px 0 32px; }
+h2 { font: 600 26px/1.2 var(--serif); margin: 0 0 14px; }
+h3 { font: 600 19px var(--serif); margin: 8px 0 6px; }
+p { margin: 0 0 12px; max-width: 68ch; }
+ul { padding-left: 20px; margin: 0; }
+li { margin: 6px 0; }
+code { font: 14px var(--mono); background: var(--paper-2); padding: 1px 5px; border-radius: 4px; }
+
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+
+.shot { margin: 0; }
+.shot img { border-radius: 10px; border: 1px solid var(--rule); box-shadow: 0 10px 30px -18px #0007; background: var(--vp); }
+.shot figcaption { font-size: 13px; color: var(--muted); margin-top: 8px; }
+.shots { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 32px; }
+
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.steps article { background: #fbf8f1; border: 1px solid var(--rule); border-radius: 10px; padding: 18px; }
+.steps .n { font: 600 13px var(--mono); color: #8a6a1c; }
+.steps p { font-size: 15px; margin: 0; }
+
+.stat { font: 16px var(--mono); border-left: 3px solid var(--select); padding-left: 12px; }
+.stat b { font-size: 22px; }
+
+.todo, .empty { color: var(--muted); font-style: italic; border: 1px dashed var(--rule); border-radius: 8px; padding: 14px 16px; }
+
+.quotes { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+.quotes figure { margin: 0; background: #fbf8f1; border: 1px solid var(--rule); border-radius: 10px; padding: 18px; }
+.quotes blockquote { margin: 0 0 10px; font: 17px/1.5 var(--serif); }
+.quotes figcaption { font-size: 13px; color: var(--muted); }
+.quotes .empty { grid-column: 1 / -1; }
+
+.foot { max-width: 1120px; margin: 0 auto; padding: 24px var(--gutter) 40px; font-size: 13px; color: var(--muted); }
+
+@media (max-width: 760px) {
+  .grid2, .shots, .steps { grid-template-columns: 1fr; }
+  .grid2 { gap: 0; }
+  .grid2 > div + div { margin-top: 32px; }
+  section { padding: 36px 0; }
+}

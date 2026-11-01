@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Elektrolab — případová studie</title>
+  <meta name="description" content="Jak vznikl Elektrolab: 3D elektrostatika pro gymnázium, postavená přesně podle hodin fyziky.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="case.css">
+</head>
+<body>
+  <header class="top">
+    <a class="brand" href="index.html">Elektrolab</a>
+    <a class="open" href="index.html">Otevřít aplikaci →</a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="kicker">Případová studie · školní projekt · 2026</p>
+      <h1>Elektrostatika, kterou jde vidět a posunout prstem</h1>
+      <p class="lead">Elektrolab je 3D studijní pomůcka pro naši třídu na gymnáziu. Náboje, siločáry, intenzita
+        a práce v poli — všechno, co je v sešitě jako vzorec, je tady jako scéna, se kterou si můžeš hrát.
+        A každé číslo sedí se sešitem.</p>
+      <figure class="shot wide">
+        <img src="assets/lab-prace.png" alt="Laboratoř: práce v homogenním poli mezi dvěma deskami, voltmetr a graf práce podél cesty" loading="lazy">
+        <figcaption>Laboratoř — práce v poli: cesta z A do B, voltmetr, graf práce podél cesty a rozpis úseků W = F·s·cos α.</figcaption>
+      </figure>
+    </section>
+
+    <section class="grid2">
+      <div>
+        <h2>Problém</h2>
+        <p>Elektrostatika je v sešitě jen vzorce a pár obrázků. Siločáry, intenzita nebo to, že práce v poli
+          nezávisí na cestě, se na papíře špatně představují. První verze aplikace to sice ukazovala, ale
+          na první pohled bylo na obrazovce patnáct ovládacích prvků a dva panely čísel — člověk nevěděl,
+          kam se dívat.</p>
+      </div>
+      <div>
+        <h2>Cíl</h2>
+        <ul>
+          <li>Teorie, která patří k obrázku: co to je, vzorec a pod ním čísla přímo ze scény.</li>
+          <li>Do hloubky na požádání: vzorce, dosazení, grafy, měřicí přístroje.</li>
+          <li>Přesně podle hodin: stejné značky, stejné vzorce, stejné příklady jako v sešitě.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>Jak to funguje: tři hloubky</h2>
+      <div class="steps">
+        <article>
+          <span class="n">1</span>
+          <h3>Průvodce</h3>
+          <p>Pět kapitol v pořadí lekcí: náboj a Coulombův zákon, permitivita, elektrické pole, intenzita,
+            práce v poli. U každé: co to je, vzorec a ovládání scény.</p>
+        </article>
+        <article>
+          <span class="n">2</span>
+          <h3>Příklad ze sešitu</h3>
+          <p>Zadání z hodiny; řešení se ukáže až po kliknutí. Jedním tlačítkem se příklad postaví ve 3D scéně
+            a vzorec nad ním se přepočítá s čísly ze scény.</p>
+        </article>
+        <article>
+          <span class="n">3</span>
+          <h3>Laboratoř</h3>
+          <p>Všechny ovládací prvky, grafy (Obr. 2 a 3), ručkový přístroj (siloměr, |E|, voltmetr),
+            sestava pokusu a „Příklady ze sešitu“, které se porovnají s výsledkem v sešitě.</p>
+        </article>
+      </div>
+      <div class="shots">
+        <figure class="shot"><img src="assets/guide-naboj.png" alt="Průvodce: tření ebonitové tyče o hadr, elektrony přecházejí na tyč" loading="lazy"><figcaption>Co je náboj? Elektrony přejdou z hadru na tyč, celkový náboj zůstane 0.</figcaption></figure>
+        <figure class="shot"><img src="assets/guide-coulomb.png" alt="Průvodce: dva náboje a šipky elektrické síly" loading="lazy"><figcaption>Coulombův zákon: poloviční vzdálenost → čtyřikrát větší síla.</figcaption></figure>
+        <figure class="shot"><img src="assets/guide-intenzita.png" alt="Průvodce: vektory intenzity obarvené podle velikosti a bod P" loading="lazy"><figcaption>Intenzita: velikost pole ukazuje barva, ne délka šipky — jako v lekci 04.</figcaption></figure>
+        <figure class="shot"><img src="assets/guide-prace.png" alt="Průvodce: přenos náboje z A do B po schodech mezi deskami" loading="lazy"><figcaption>Práce v poli: jiná cesta, stejná práce — síly pole jsou konzervativní.</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="grid2">
+      <div>
+        <h2>Přesnost: shoda se sešitem</h2>
+        <p>Pravidlo projektu: všechno musí odpovídat tomu, co jsme brali. Značky z hodiny (Q, r, Fₑ, E, W, U),
+          Coulombův zákon ve tvaru z tabule <i>F</i>ₑ = 1/(4·π·ε)·Q₁·Q₂/r², desetinná čárka, jednotky V·m⁻¹.
+          Každý „Příklad ze sešitu“ je zároveň automatický test — aplikace po zaokrouhlení musí ukázat
+          přesně výsledek ze sešitu (např. 02 Př. 1 → 3 600 000 N, 03 Př. 6 → 4,9·10⁻³ N, 05 Př. 6 → 10⁻⁴ J).</p>
+        <p class="stat"><b>75</b> automatických testů · <b>0</b> selhání</p>
+      </div>
+      <div>
+        <h2>Technologie</h2>
+        <ul>
+          <li>Čisté HTML, CSS a JavaScript, žádný build ani instalace.</li>
+          <li>Three.js pro 3D scénu, vlastní grafy na canvasu a SVG přístroj.</li>
+          <li>Fyzika oddělená od vykreslování (<code>src/core/</code>) a testovaná v Node (<code>node --test</code>).</li>
+          <li>Funguje na počítači i na telefonu, ovládání myší i prstem.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="mine">
+      <h2>Co jsem se naučil</h2>
+      <p class="todo">Doplním vlastními slovy.</p>
+    </section>
+
+    <section>
+      <h2>Ohlasy</h2>
+      <div id="testimonials" class="quotes"></div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <a href="index.html">Elektrolab</a> · studijní pomůcka k elektrostatice pro gymnázium
+  </footer>
+
+  <script>
+    // Ohlasy se načítají z testimonials.json: [{ "text": "…", "author": "…", "role": "spolužák" }]
+    // Jen skutečné ohlasy — žádné vymyšlené.
+    (async () => {
+      const box = document.getElementById('testimonials');
+      let items = [];
+      try { items = await (await fetch('testimonials.json', { cache: 'no-store' })).json(); } catch { items = []; }
+      if (!Array.isArray(items) || items.length === 0) {
+        box.innerHTML = '<p class="empty">Ohlasy spolužáků a vyučujícího doplním po prezentaci.</p>';
+        return;
+      }
+      for (const t of items) {
+        const fig = document.createElement('figure');
+        const q = document.createElement('blockquote');
+        q.textContent = t.text;
+        const cap = document.createElement('figcaption');
+        cap.textContent = [t.author, t.role].filter(Boolean).join(' · ');
+        fig.append(q, cap);
+        box.append(fig);
+      }
+    })();
+  </script>
+</body>
+</html>

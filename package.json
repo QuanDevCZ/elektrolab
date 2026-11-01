@@ -1,0 +1,12 @@
+{
+  "name": "elektrolab",
+  "version": "0.1.0",
+  "description": "Elektrolab — 3D elektrostatika pro gymnázium: Coulombův zákon, elektrické pole, práce, potenciál.",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "test": "node --test",
+    "start": "npx serve -l 4340 .",
+    "dev": "npx serve -l 4340 ."
+  }
+}

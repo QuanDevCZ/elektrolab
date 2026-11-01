@@ -1,0 +1,369 @@
+# Elektrolab — Stage 1 plan (aligned to the class notes)
+
+## Context
+Study app for Czech gymnázium electrostatics. Physics is shown in 3D instead of written out.
+It will be **presented to the class and the teacher**, so everything in it must match what was
+taught: the same symbols, terms and formulas, and examples taken from the lessons. Nothing from
+outside the notes appears unless it is clearly marked.
+Plain HTML/CSS/JS + Three.js from CDN, no build, GitHub Pages, iPhone touch. Physics code is
+commented so the user can learn from it. Five stages in total; **this plan builds Stage 1 only**
+and records the class-alignment rules for every later stage.
+
+Triage: medium · tests yes (pure physics in Node) · no branch (new project, no repo yet).
+
+Source notes (read 2026-10-20): `Downloads/01 Elektrický náboj.pdf`, `02 Coulombův zákon.pdf`,
+`03 Permitivita prostředí.pdf`, `04 Elektrické pole.pdf`, `05 Práce v elektrickém poli.pdf`,
+`06 Elektrický potenciál.pdf`, plus the user's own handwritten class notes `Coulumbův Zákon.pdf`
+(what was actually written on the board). **Where the notes and the textbook PDFs differ, the
+user's class notes win.**
+
+## Class-alignment rules (apply to all stages)
+- **Symbols, from the class notes:** Q (Q₁, Q₂, Q₀ for the test charge), **r** for distance (the
+  board used r, the textbook R), F_e for the electric force, E, W, U, U_AB, φ, Ep, d, s, α.
+- **Main form of Coulomb's law, as on the board:** F_e = 1/(4π·ε) · Q₁·Q₂/r², with ε = ε₀·εᵣ
+  ("představuje prostředí – permitivita"). The k form F = k·Q₁·Q₂/r² with k = 9·10⁹ N·m²·C⁻² is
+  shown alongside it as the vacuum/air shortcut (lesson 02/03).
+- **Constants as in the notes:** ε₀ = 8,85·10⁻¹² C²·N⁻¹·m⁻²; e = 1,602·10⁻¹⁹ C. Results are
+  shown to 2–3 significant figures, so they match the sešit (e.g. 3,6·10⁶ N).
+- **Intenzita units:** V·m⁻¹ is primary (class notes: "E [V/m]"), with N·C⁻¹ as the equal unit
+  from lesson 04. Intro line from the notes: E = F/Q.
+- **Number format:** decimal comma, "·10ⁿ" (centre dot, not ×), units such as N·C⁻¹ and V·m⁻¹.
+- **Formulas, only these:** F_e = 1/(4π·ε)·Q₁·Q₂/r² (= k·Q₁·Q₂/r²), |E| = k·|Q|/r² (point charge), F = Q·E,
+  W = F·s·cos α, W = Q·U, U = E·d (homogeneous field), U = W/Q, φ = Ep/Q,
+  U_AB = φ_A − φ_B (the work the field does on 1 C moving from A to B). Magnitudes plus
+  direction words (přitažlivá / odpudivá). No vector components.
+- **Potential: visual only (user's choice).** No φ = k·Q/r formula anywhere. φ appears as colour
+  and height (the "3D kopec" from lesson 06) plus readings. Earth is the zero level, as in the
+  notes. Internally φ is still computed by superposition (code comment only).
+- **Terms:** siločára = "čára, po které by se pohyboval jednotkový kladný náboj"; radiální pole,
+  pole dipólu, homogenní pole (dvě nabité desky); ekvipotenciální plochy ⟂ siločáry; konzervativní
+  síly; elementární náboj; zákon zachování náboje.
+- **Presets come from the lessons, not invented:** elektron (−e), proton (+e), 1 µC
+  (05 Př. 6), 2 µC (04 Př. 2), skleněná tyč (+) and novodurová tyč (−) (01, magnitude marked
+  "přibližně"). The balloon is dropped because it is not in the notes.
+- **Prostředí (lesson 03):** k = 1/(4π·ε₀·εᵣ). k = 9·10⁹ "platí pro vakuum a přibližně také pro
+  vzduch". The selector uses only lesson 03's table values: vakuum 1, vzduch 1,0006, petrolej 2,0,
+  porcelán 6, ethanol 24, voda 81. Plus a free εᵣ slider (1–100) for 03 Př. 5 (εᵣ = 2 → half the
+  force) and Př. 8 (εᵣ ≈ 3,5). Range-only materials (papír 2–2,5, sklo 5–10) are left out so no
+  value is invented. Readouts show the current k (e.g. ethanol → 3,75·10⁸ N·m²·C⁻²).
+- **Units:** nC and µC as in the notes (150 nC, 1 µC).
+
+## Stage roadmap (adjusted to the notes)
+1. **Coulombův zákon** (this plan): charges, dragging, force arrows, siločáry, readouts, status line.
+2. **Elektrické pole:** vector grid of E, colour on a log scale with legend (lesson 04 notes that
+   colour, not length, shows strength). Scenes: radiální / dipól / **dvě nabité desky**.
+3. **Potenciál:** colour slice, ekvipotenciální plochy, and the 3D height surface ("strmost kopce" =
+   E), all visual, no formula. It follows the class-notes storyline: the gravity analogy first
+   (lifted stone, W = ΔEp = F·h = m·g·h, gravitační intenzita F/m, potenciál Ep/m), then
+   "vektorový vs. skalární popis pole", vrstevnice on a map with the **gradient** (the term from
+   the notes), and finally the charged plates with A, B and equipotential lines parallel to the
+   plates, φ [V], U_AB = φ_A − φ_B.
+4. **Práce a napětí:** test charge from A to B, W = Q·U_AB, voltmeter, φ(x) graph; different
+   paths give the same W (the homogeneous-field staircase from lesson 06); W > 0, < 0 and = 0
+   cases (05 Př. 6). Class-notes chain on screen: E = F/Q → F = E·Q → W = F·d → W = Q·E·d →
+   U = E·d → W = Q·U_AB. Socket example as done in class: U = 230 V, d = 0,02 m →
+   E = 11 500 V·m⁻¹ (the textbook uses 1,8 cm → 12 800).
+5. **Lekce:** short Czech panels per mode in KaTeX, the "Závěrečný přehled" table (F/E, Ep/φ, W/U)
+   as the summary, and "Příklad ze sešitu" buttons.
+
+## Stage 1 — location & conventions (reuse night-racer's setup)
+- Folder `C:\Users\Dell\Desktop\Projects\elektrolab\`. First write `plan.txt` (this full plan),
+  `CLAUDE.md` (alignment rules + boundary) and `README.md`.
+- Same pattern as `Desktop/Projects/night-racer`: zero deps, ES modules, Three.js r160 via jsDelivr
+  import map (`three`, `three/addons/` for OrbitControls), `package.json` with
+  `"test": "node --test"` and `"start": "npx serve -l 4330 ."`.
+- **Boundary:** `src/core/*` is pure (no DOM, no `three`). It holds the physics, field-line
+  tracing, Czech formatting and the status sentence, all testable in Node. Browser files only
+  render.
+- No `git init` or commits unless asked (GitHub Pages later via `/ship`).
+
+## Stage 1 — files
+```
+index.html, style.css
+src/core/constants.js  ε₀, e, εᵣ table from lesson 03 (values exactly as in the notes, with lesson refs)
+src/core/physics.js    coulombForce(Q1,Q2,r,epsR), fieldAt(p, charges) superposition, netForceOn(i)
+src/core/fieldlines.js traceLines(charges) → polylines (RK4 along E, seeds around charges,
+                       count ∝ |Q| share, stop at charges / bounds / max steps)
+src/core/format.js     Czech SI: decimal comma, "·10ⁿ", 2–3 sig. figures, N·C⁻¹ style units
+src/core/status.js     statusSentence(state, prev) → one Czech sentence
+src/core/examples.js   "Příklad ze sešitu" setups with their expected sešit answers
+src/scene.js  charges.js  arrows.js  lines.js  ui.js  main.js
+tests/*.test.js        one per core module
+```
+
+## Stage 1 — behaviour
+- **Units:** scene unit = 1 m. The bench has two scales, **4 m** (0,5 m grid) and **40 cm**
+  (5 cm grid), so the lesson examples fit at true scale (0,5–2 m in 02/04; 3,4 cm and 10 cm in 03).
+  Each sešit example picks its scale. r is clamped at a minimum (sphere radius) and the code says
+  why.
+- **Prostředí selector** (left panel) and the current k/εᵣ in "Měření". Changing the medium
+  re-renders the arrows, and the status line says e.g. "V ethanolu je síla 24krát menší než ve
+  vakuu."
+- **"Dotkni se" (touch the charges):** for 03 Př. 7, charges 1 and 2 touch and share their total,
+  then return to their positions. (+80 nC, −20 nC) → 30 nC each, and attraction flips to
+  repulsion. The status line cites zákon zachování elektrického náboje.
+- **Layout:** top bar with the status sentence · left "Ovládání" (přidat +/−, presets, Q slider with
+  exact preset values, r slider between charges 1–2, smazat) · centre "Obr. 1" dark viewport with
+  Šikmo / Z boku / Shora · right "Měření" (F_e, r, Q₁, Q₂, |E| at the selected charge, přitažlivá /
+  odpudivá). Phone: viewport first, panels below, 16 px gutters, no horizontal scroll.
+- **Příklad ze sešitu (Stage 1 set):** 02 Př. 1 (0,01 C, 0,01 C, 0,5 m → 3,6·10⁶ N); 02 Př. 3
+  (3,3·10⁻⁴ C at 1 m → 1000 N); 03 Př. 1 (150 nC, 100 nC, 0,034 m, vakuum → 0,12 N); 03 Př. 6
+  (same, ethanol → 4,9·10⁻³ N); 03 Př. 7 (+80 nC, −20 nC, 0,1 m → 1,44·10⁻³ N, then "Dotkni se" →
+  8,1·10⁻⁴ N). One click sets up the scene so the readout shows the sešit result.
+  (The electron example at 10⁻⁹ m is out of bench scale. It moves to Stage 5 lessons.)
+- **Drag:** pointer events (mouse + touch), raycast onto the bench plane, OrbitControls off while
+  dragging, `touch-action: none`. Tap to select. Max 6 charges.
+- **Force arrows:** the net Coulomb force on each charge, with length on a log scale so e and µC
+  are both visible. The true value is in the readouts, and a caption says length is not to scale.
+- **Siločáry:** traced in 3D from + toward −, with arrowheads in the direction a jednotkový kladný
+  náboj would move. Retraced on change (coarse while dragging, full detail on release). Single
+  colour; log colouring comes in Stage 2.
+- **Status line** uses wording from the notes: "Náboje stejného znaménka se odpuzují.",
+  "Náboje opačného znaménka se přitahují.", "Elektrická síla s rostoucí vzdáleností klesá — náboj
+  je daleko, síla je téměř nulová.", "Vzdálenost se zmenšila na polovinu — síla vzrostla
+  čtyřikrát.", "Přidej náboj tlačítkem vlevo."
+- **Design:** paper panels (#f4efe4-ish) around a near-black viewport, "Obr. 1" labels, Source
+  Serif 4 headings + IBM Plex Sans/Mono numbers (Google Fonts, free), colour tokens in CSS.
+
+## Verification
+1. `npm test`: every Příklad ze sešitu reproduces the sešit answer at the shown precision (02 Př. 1
+   → 3,6·10⁶ N; 02 Př. 2 → 2,3·10⁻¹⁰ N; 02 Př. 3 → Q = 3,3·10⁻⁴ C; 03 Př. 6 → 4,9·10⁻³ N;
+   03 Př. 7 → 1,44·10⁻³ N and 8,1·10⁻⁴ N; 03 Př. 8 → εᵣ ≈ 3,5; ethanol k → 3,75·10⁸;
+   04 Př. 2 → r = 134 m; 04 Př. 3 → 6,7·10⁵ N·C⁻¹). Superposition midpoint of equal charges gives E = 0. Field lines
+   start and end at charges. Formatting and status cases pass. Output is pasted in the report.
+2. `npm start` in Chrome (claude-in-chrome): add and drag charges, check that arrows, siločáry,
+   readouts and the status line update together, run both sešit examples, screenshot each view,
+   and confirm no console errors.
+3. 390 px width: layout stacks with no horizontal scroll. A real iPhone touch test is left to the
+   user, and the report says so.
+4. Terminology audit: grep the UI strings for lowercase q, R as distance, ×, "balónek" and
+   "k·Q/r", and confirm none appear.
+
+========================================================================
+## Stage 2 — Elektrické pole (detailed plan, started 2026-10-21)
+
+Source: lesson 04 + class notes ("E = F/Q", "E [V/m]", radiální pole má střed, siločáry,
+pole homogenní). Key teaching point from 04: in the vector pictures the field strength is shown
+by COLOUR, not arrow length ("světlejší barva znamená silnější pole").
+
+- Mode tabs in the top bar: "1 · Coulombův zákon" | "2 · Elektrické pole". Mode sets display
+  defaults (mode 2: vectors on), the example list and the Měření sections. Everything else is shared.
+- Vector grid of E (core/fieldgrid.js): arrows of EQUAL length at grid points, coloured by
+  log10|E| (core/colormap.js, dark → light = weak → strong). "v rovině" (y = 0, default) or
+  "v prostoru" (3 layers), or hidden. Points inside charges / plates are skipped.
+- Field lines are coloured with the same log scale. Legend in the viewport: gradient bar with
+  decade ticks in V·m⁻¹ and "světlejší = silnější pole". The colour range is fixed per scene
+  (computed in vacuum when the set of charges/plates/scale changes), so switching the medium
+  visibly darkens the field instead of re-normalising it away.
+- Typ pole presets: radiální (one +), dipól (+ and −), dvě nabité desky (homogenní pole).
+  Plates = two parallel square sheets standing on the bench (core/plates.js), modelled as a grid
+  of point charges (superposition); field lines start/end on plate faces and stop when they cross
+  a plate. Plate charge ±5 µC (a scene value, not a taught number — shown as such).
+- Bod P (probe), mode 2 only: draggable marker; Měření shows E in P in V·m⁻¹ = N·C⁻¹ and
+  "na náboj 1 C by tu působila síla … N" (the lesson-04 definition of intenzita).
+- Měření in mode 2: E = F/Q (class notes), |E| = k·|Q|/r² (point charge, as in 04),
+  F = Q·E with live substitution for the selected charge.
+- Status sentences (mode 2): radial / dipole / homogeneous descriptions in the lesson's words,
+  the probe reading, "test charge between plates → same force everywhere", and the medium change
+  phrased for intenzita.
+- Example 04 Př. 1: Q₀ = 10⁻³ C, Q₁ = 1 C, 2 m → E = 2,25·10⁶ V·m⁻¹, F = 2 250 000 N. Charges keep
+  their textbook labels (Q₀, Q₁). Changing Q₁ (variants b–d) keeps the example valid: E stays the
+  same, only F changes — that is the lesson's point.
+- Tests: plates (uniform between plates, direction + → −, weaker outside), field grid (counts,
+  skipping), colormap (range in whole decades, monotonic), status sentences, example 04-1.
+- Verify in Chrome: each preset, probe drag, medium change darkens colours, phone width.
+- Status 2026-10-21: Stage 2 built. 51/51 tests. Verified in Chrome: presets, probe drag, 04 Př. 1
+  a)–d), medium darkening, plates homogeneity, phone width. Changes vs plan: plates are
+  0,5·S wide with a 0,25·S gap (wider than the gap so the field inside is homogeneous); the
+  "same force everywhere" sentence only fires in the central half of the gap (edges differ ~7 %).
+
+========================================================================
+## Stage 3 — Průvodce + Laboratoř + případová studie (started 2026-10-28)
+
+
+## Context
+Stages 1–2 are built (Coulomb + pole, 51 tests), but a first-time viewer sees ~15 controls and
+two dense panels at once and has no idea where to look. The user wants:
+- **simple at first glance, deeper on demand** — nobody gets lost at the start;
+- all topics of the unit: náboj (proton +, elektron −), Coulombův zákon, permitivita,
+  elektrické pole, intenzita, práce v poli;
+- the look/feel of the reference post (instrument bench: big Obr. 1 3D scene, extra figures —
+  graph strips, an analog gauge, an "apparatus" table);
+- a **Czech case-study page** for the portfolio, with a place for real testimonials.
+
+Decisions taken with the user: structure = **Chapters (Průvodce) + Laboratoř**; case study in
+Czech. Sources: the user put lessons **02–06** into `elektrolab/lessons/` (read 2026-10-28).
+Lesson 01 and the handwritten `Coulumbův Zákon.pdf` are not there — their rules stay as recorded
+in `plan.txt`. The micro-world is built from what lesson 02 itself says (below); if the user later
+adds lesson 01 to `lessons/`, its pictures get copied in as an extra step.
+
+Triage: large · tests yes (new core modules + chapter audit) · no branch (not a git repo).
+
+## Three depths
+1. **Průvodce (default on load).** Full-width 3D scene, a small card: chapter number, title,
+   ONE sentence, at most one or two controls, a "Zapamatuj si" line, buttons Zpět / Další and
+   progress dots (5 chapters). Nothing else on screen.
+2. **"Ukaž víc"** inside the card — expands the formula (with live substitution) and 2–3 readouts
+   for that chapter only.
+3. **"Otevřít v laboratoři"** — loads the same scene into the full bench (today's UI, upgraded).
+   A top-bar switch Průvodce | Laboratoř is always visible.
+
+## Chapters (order follows lessons 01 → 05)
+| # | Kapitola | Scene | Control(s) | Zapamatuj si |
+|---|---|---|---|---|
+| 1 | Coulombův zákon | two balls, force arrows | r slider, ± toggle | stejné se odpuzují, opačné přitahují; r/2 → F×4 |
+| 2 | Permitivita | same pair | medium chips (lesson 03 table) | v ethanolu 24× menší síla |
+| 3 | Elektrické pole | siločáry | radiální / dipól / desky | siločára = dráha jednotkového kladného náboje |
+| 4 | Intenzita | vector grid + bod P | drag P | E = F/Q, světlejší = silnější |
+| 5 | Práce v poli | plates, test charge A → B | Q sign, path choice | W = Q·U, U = E·d; W nezávisí na cestě |
+
+No separate micro-world chapter (user's choice): lessons 02–06 only touch it in a few lines of
+lesson 02. Chapter 1 opens with one small **"Co je náboj?"** step built from exactly those lines:
+elementární náboj e = 1,602·10⁻¹⁹ C "náboj elektronu a protonu" (elektron −e, proton +e), "nelze
+jej libovolně dělit", zákon zachování el. náboje (plastic rod rubbed with a rag: electrons hop to
+the rod → rod −, rag +, total unchanged), and 02 Př. 2 (two electrons at 10⁻⁹ m: F_e = 2,3·10⁻¹⁰ N
+vs F_g = 5,5·10⁻⁵³ N, shown as two bars). One "Další" leads into the two-ball bench. Atom
+internals (jádro, neutrony) are not in the lessons, so they are left out.
+
+Chapter 5 follows lessons 05/06 exactly: plates with Q₁, Q₂ moved + → − desku (W = Q·E·d, Ed
+= napětí U), 05 Př. 6 a/b/c (E = 1000 V·m⁻¹, 1 µC, 10 cm → 10⁻⁴ J, −10⁻⁴ J, 0 J) with
+α = 0°/180°/90°, Př. 7 (negative charge flips the sign), the 06 path picture (red segments ∥
+field do work, green ⟂ do none → same W for every path, "konzervativní síly"), voltage
+examples (monočlánek 1,5 V, plochá baterie 3·1,5 = 4,5 V, zásuvka 230 V; 05 Př. 8 →
+12 800 V·m⁻¹; Př. 9 → 4 400 000 V·m⁻¹). "Ukaž víc" adds the 06 Závěrečný přehled table
+(strmost kopce F/E · nadmořská výška Ep/φ · převýšení W/U), Earth = zero potential. Formulas
+only from the alignment rules; no φ = k·Q/r anywhere. New sešit examples (05 Př. 6a–c, 8, 9)
+join `tests/examples.test.js`.
+
+## Laboratoř upgrade (reference look)
+Keep the paper-panel + dark viewport design. Add, below Obr. 1:
+- **Obr. 2 — F_e v závislosti na r**: 2D canvas, 1/r² curve for the current Q₁, Q₂, medium; live
+  dot at the current r (the "oscilloscope" strip).
+- **Obr. 3 — |E| podél přímky Q₁Q₂** (log axis, same colormap as the scene); in chapter/mode 6
+  the voltage along A → B (linear between plates).
+- **Analog gauge** in Měření: siloměr for F_e (log dial), voltmetr in Práce.
+- **"Sestava" table** (like the reference's Apparatus): charges, medium, εᵣ, k, bench size.
+- Panels collapsible; Lab opens with Ovládání sections collapsed except Náboje.
+
+## Files
+New, pure (`src/core/`, each with a test):
+- `chapters.js` — chapter definitions: text, scene setup, allowed controls, readouts.
+- `work.js` — W = Q·U, U = E·d, work along a polyline in a homogeneous field (path independence).
+- `curves.js` — sampled F(r) and |E| along a segment for the graphs.
+
+New, browser: `src/story.js` (chapter card + navigation), `src/naboj.js` ("Co je náboj?" step:
+rod + rag + electron dots),
+`src/graphs.js` (canvas figures), `src/gauge.js` (SVG dial), `src/work-scene.js` (A, B, path).
+
+Changed: `index.html` (Průvodce card, mode switch, Obr. 2/3, gauge), `style.css`,
+`src/main.js` — expose a small scene API reused by story.js instead of duplicating:
+`loadFieldScene`, `loadExample`, `setMedium`, `setDistance`, `setMode`, `setScale` (all already
+exist in main.js); move start-up into a `loadChapter(n)` path.
+
+Case study: `pripadova-studie.html` + `case.css`, screenshots in `assets/`. Sections: Problém
+(abstraktní elektrostatika v sešitu) · Cíl · Jak to funguje (3 hloubky) · Přesnost (every sešit
+example is a test; real `npm test` count) · Technologie (Three.js, zero deps, Node tests) ·
+Co jsem se naučil (left for the user to write — marked) · **Ohlasy** rendered from
+`testimonials.json`; empty → "Ohlasy spolužáků a vyučujícího doplním po prezentaci." No invented
+quotes. Collection suggestion: a free Google Form the user creates.
+
+Docs: append this plan as "Stage 3" to `plan.txt`; update `CLAUDE.md` (Průvodce/Lab, `lessons/`
+as the source folder, chapters.js).
+
+## Verification
+1. `npm test` — existing 51 pass; new: work.js (Q·U = Q·E·d; two paths → same W; W sign cases
+   for +/− charge), curves.js (F(r/2) = 4·F(r)), chapters.js audit (no lowercase q, no R as
+   distance, no ×, no "k·Q/r", every chapter has ≤ 2 controls and one sentence). Output pasted.
+2. Chrome (`npm start`, :4340): fresh load lands in chapter, walk all chapters, "Ukaž víc",
+   "Otevřít v laboratoři" keeps the scene, Obr. 2/3 update while dragging, no console errors,
+   screenshots of each chapter.
+3. 390 px width: card sits under the scene, no horizontal scroll. Real iPhone test left to user.
+4. Case study page renders with empty testimonials; screenshot.
+5. Terminology audit against `lessons/` text (pdftotext): every chapter sentence uses terms
+   that appear in 02–06 or plan.txt's class-notes rules.
+- Status 2026-10-28: Stage 3 built. 75/75 tests. Verified in Chrome: every guide page, rubbing,
+  path change ("Jiná cesta, stejná práce"), medium chips, lab coulomb/pole/prace with Obr. 2/3,
+  gauge and Sestava, 390 px (iframe) without horizontal scroll, case study with empty testimonials.
+  Changes vs plan: Obr. 3 only in Coulomb mode (pole and práce use one wide Obr. 2); the 3rd lab tab
+  "3 · Práce v poli" was added; socket uses the class value d = 0,02 m (handwritten notes win);
+  screenshots in assets/ come from headless Chrome. Real iPhone test still left to the user.
+
+========================================================================
+## Stage 3b — kapitoly průvodce: teorie + vzorec + obrázek + příklad (2026-10-30)
+
+Feedback: the rod + rag scene is right (done in class), but the theory on the card did not match the
+picture. Wanted per chapter: what it is + formula + one sešit example (zadání visible, solution
+shown only on click) + a description of what is in the picture. Elementary charge was barely
+covered: mention it once, small. User notes (Coulumbův zákon, typed): F = k·Q₁·Q₂/R², stejné se
+odpuzují / opačné přitahují, k = 1/(4πε), ε závisí na prostředí = permitivita, CZ vs NZ (Newton
+nezávisí na prostředí), e = 1,602·10⁻¹⁹ C, 9·10⁹ platí pro vakuum a přibližně pro vzduch.
+Decision (asked 2026-10-30): keep r for distance, not R.
+
+Card layout (story.js), data in core/chapters.js:
+1. kicker + title
+2. Co to je — 3–5 one-sentence bullets from the notes / lesson
+3. Vzorec — formula box; below it the live substitution with the numbers from the scene
+4. Na obrázku — legend bullets with colour swatches tying each scene object to the theory;
+   then the controls, "Zkus:" and the live value + status sentence
+5. Příklad ze sešitu — zadání + dáno; "Ukázat řešení" reveals the sešit steps and answer;
+   "Ukázat ve scéně" loads the matching example into the 3D scene
+6. Víc k tématu — only where there is extra (εᵣ table; závěrečný přehled + napětí kolem nás)
+Examples: 02 Př. 1 (coulomb), 03 Př. 6 (permitivita), 04 Př. 1a (pole), 04 Př. 3 (intenzita,
+no scene), 05 Př. 6a (práce). Náboj page: theory about rubbing + conservation, e as a small note,
+no formula/example (lesson 01 is not on disk).
+Tests: chapters.test.js checks bullets are single sentences, picture legend exists, example has
+zadání/steps/answer, its scene id exists and its last step shows the sešit answer, symbols.
+- Status 2026-10-30: Stage 3b built. 77/77 tests. Verified in Chrome: all six pages, solution
+  reveal, "Ukázat ve scéně" on every example (02 Př. 1 → 3,6·10⁶ N, 03 Př. 6 → 4,86·10⁻³ N ≐ 4,9·10⁻³,
+  05 Př. 6a → 10⁻⁴ J), no console errors. Case study + README + CLAUDE.md updated.
+- 2026-10-30: under the live substitution (coulomb, permitivita) a click-to-open "Odkud je
+  8,85·10⁻¹²?" explains ε₀, k = 1/(4·π·ε), ε = ε₀·εᵣ and that 1/(4·π·ε₀) ≐ 9·10⁹; in other media it
+  explains the extra ·εᵣ and shows k (ethanol 3,75·10⁸, as in 03 Př. 3).
+- 2026-10-30: the "Na obrázku" legend list was removed from every chapter at the user's request
+  (heading, picture data, test and styles); controls, "Zkus:" and the live value stay.
+- 2026-10-30: Coulombův zákon has three sešit examples (02 Př. 1, 02 Př. 3 — inverse, find Q;
+  03 Př. 7 a+b with a "nechat kuličky dotknout" button). chapters.js: example → examples[].
+  Fixed: the touch animation could skip the charge sharing at low frame rates (sharing now happens
+  once T ≥ 0.4) and a stale touch animation is dropped when the scene changes.
+
+========================================================================
+## Stage 3c — stránka „Relativita a absolutismus“ (2026-10-30)
+
+Discussed in class during Coulombův zákon (not in the sešit): a relative value is always relative to
+something. Scientists measured Earth–Sun (~150 000 000 km) and made it 1 AU; other planets are given
+in AU. New guide page after "coulomb", chapter 1 part 3/3, marked "z hodiny, mimo sešit".
+- core/relativita.js: PLANETS (Merkur 0,39 · Venuše 0,72 · Země 1 · Mars 1,52 AU — rounded real
+  values; the user guessed Venus 0,5 AU, corrected), AU_KM = 150 000 000 km as the teacher said,
+  conversions, Czech number grouping, status sentence. Tested.
+- Theory ties it back to electrostatics: εᵣ is relative to vacuum, potential is relative to Earth.
+- Formula: údaj v AU = vzdálenost v km / 150 000 000 km; εᵣ = ε/ε₀ (rearranged ε = ε₀·εᵣ).
+- Scene (relativita-scene.js): Sun + planets on a line with orbits, highlighted 1 AU bar Sun–Earth,
+  labels switch AU ↔ km. Controls: unit (AU / km), planet (live value + "ve scéně" formula).
+- Example (tag "z hodiny"): Venuše 0,72 AU → km. Not a sešit example, labelled so.
+- chapterTitles: chapter 1 dot keeps the title "Coulombův zákon" (page flag lead: true).
+- Status 2026-10-30: Stage 3c built. 82/82 tests. Verified in Chrome: page renders after Coulombův
+  zákon (část 3/3), AU ↔ km toggle, planet buttons and planet click, live formula, "z hodiny" example
+  label, chapter dots still say "Coulombův zákon", lab switch from this page opens Coulomb. Own front
+  camera preset "relativita". No console errors.
+- 2026-10-30: all eight planets (Jupiter 5,2 · Saturn 9,54 · Uran 19,19 · Neptun 30,07 AU, rounded).
+  Two linear scales chosen by the selected planet: inner (Merkur–Mars, 2,1 m/AU) and whole system
+  (0,115 m/AU) — the 1 AU bar visibly shortens, labelled so. Planet control is wrapping chips.
+- 2026-10-31: kapitola 5 shows "Jak se to spočítalo" under the live value: d = x_B − x_A, U_AB = E·d,
+  W = Q·U_AB with the scene numbers (sign notes for d < 0 and Q < 0). Formula pieces no longer wrap.
+- 2026-10-31: kapitola 5 has a second example, 05 Př. 8 zásuvka as done in class (230 V, 0,02 m →
+  11 500 V·m⁻¹; textbook 1,8 cm → 12 800 mentioned in the answer). Tested.
+- 2026-10-31: kapitola 5 "Vysvětlení od začátku — jednoduše" (details under Co to je): 5 short steps
+  (práce, cos α, pole, napětí, cesta), table "který vzorec kdy", zásuvka 230 V / 0,02 m → 11 500 V·m⁻¹,
+  one-sentence summary. Data in chapters.js (explainer), checked by tests.
+- 2026-10-31: view button "Průvodce" renamed to "Teorie"; the "O projektu" link removed from the top bar
+  (pripadova-studie.html, case.css, testimonials.json and assets/ are still on disk, unlinked).
+- 2026-11-01: mobile (≤ 720 px): .figure is display: contents, so the 3D viewport is a page item and
+  sticks to the top (42svh) while the card / panels scroll under it; one-row top bar; lab order
+  viewport → controls → readouts → graphs → caption; sticky Zpět/Další; lab tabs shrink to fit.
+  scene.js VIEW_FIT pulls the camera back on narrow screens for relativita and prace.
+  Checked at 390 px in an iframe: no horizontal scroll. Real-phone touch test still left to the user.
+- 2026-11-01 (2): sticky scene removed at the user's request (scene scrolls normally again). Mobile
+  Teorie order: chapter dots + title → 3D scene → scene controls / Zkus / live value → Co to je →
+  Vzorec → Příklady → Zpět/Další (.guide is display: contents on ≤ 720 px). Desktop unchanged.
+- 2026-11-01 (3): changing chapter (Další, Zpět, chapter dots, arrow keys) jumps the page to the top
+  (instant, window.scrollTo in story.go) — on mobile the whole page scrolls, not just the card.
