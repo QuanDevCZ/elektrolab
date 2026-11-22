@@ -75,13 +75,26 @@ code { font: 14px var(--mono); background: var(--paper-2); padding: 1px 5px; bor
 .facts { list-style: none; padding: 0; margin: 28px 0 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
 .facts li { margin: 0; font-size: 14px; color: var(--ink-2); border-top: 2px solid var(--select); padding-top: 10px; }
 .facts b { display: block; font: 600 30px/1.1 var(--serif); color: var(--ink); }
-.demo { border-radius: 10px; overflow: hidden; border: 1px solid var(--rule); background: var(--vp); box-shadow: 0 10px 30px -18px #0007; }
-.demo iframe { display: block; width: 100%; height: min(760px, 80vh); border: 0; }
-.hint { font-size: 13px; color: var(--muted); margin-top: 10px; }
 .shot.phone { max-width: 220px; margin-top: 28px; }
 .shot.phone img { border-radius: 18px; }
 
 @media (max-width: 760px) {
   .facts { grid-template-columns: 1fr 1fr; }
-  .demo iframe { height: 640px; }
 }
+
+/* "Want to try it?" card (replaced the iframe demo, 2026-11-22) */
+.try { display: grid; grid-template-columns: 1.4fr 1fr; gap: 0; align-items: stretch; text-decoration: none;
+  background: #fbf8f1; border: 1px solid var(--rule); border-radius: 12px; overflow: hidden;
+  box-shadow: 0 10px 30px -18px #0007; transition: transform .2s ease, box-shadow .2s ease; }
+.try:hover { transform: translateY(-2px); box-shadow: 0 16px 36px -18px #0008; }
+.try img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; background: var(--vp); }
+.try-text { display: flex; flex-direction: column; justify-content: center; gap: 14px; padding: 32px; }
+.try-title { font: 600 30px/1.1 var(--serif); }
+.try-sub { font-size: 16px; color: var(--ink-2); }
+.try .open { align-self: flex-start; }
+@media (max-width: 760px) {
+  .try { grid-template-columns: 1fr; }
+  .try img { aspect-ratio: 16 / 10; height: auto; }
+  .try-text { padding: 22px; }
+}
+@media (prefers-reduced-motion: reduce) { .try, .try:hover { transition: none; transform: none; } }

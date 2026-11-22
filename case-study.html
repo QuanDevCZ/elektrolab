@@ -21,8 +21,8 @@
 </head>
 <body>
   <header class="top">
-    <a class="brand" href="index.html">Elektrolab</a>
-    <a class="open" href="index.html">Open the app →</a>
+    <a class="brand" href="./?from=case">Elektrolab</a>
+    <a class="open" href="./?from=case">Open the app →</a>
   </header>
 
   <main>
@@ -33,7 +33,7 @@
         lines, field strength and work in a field. Everything that's a formula in our notebook is a scene
         here that you can play with. And every number matches the notebook.</p>
       <p class="links">
-        <a class="open" href="index.html">Open the app →</a>
+        <a class="open" href="./?from=case">Open the app →</a>
         <a class="ghost" href="https://github.com/QuanDevCZ/elektrolab">Source on GitHub</a>
       </p>
       <figure class="shot wide">
@@ -48,13 +48,16 @@
       </ul>
     </section>
     <section id="try">
-      <h2>Try it here</h2>
-      <p>This is the real app, running below. It's in Czech because it was made for my class. Drag the red
-        and blue balls and watch the force arrows and the numbers change.</p>
-      <div class="demo">
-        <iframe src="./?kapitola=coulomb" title="Elektrolab app, Coulomb's law chapter" loading="lazy"></iframe>
-      </div>
-      <p class="hint">Small screen? <a href="./?kapitola=coulomb">Open it full screen</a>.</p>
+      <a class="try" href="./?kapitola=coulomb&amp;from=case">
+        <img src="assets/try.png" width="1200" height="800" alt="Two charges with an orange force arrow between them" loading="lazy">
+        <span class="try-text">
+          <span class="try-title">Want to try it?</span>
+          <span class="try-sub">Open the full app and drag the red and blue balls. The force arrows and the
+            numbers change as you move them. It's in Czech because it was made for my class. A link at the top
+            brings you back here.</span>
+          <span class="open">Open the full app →</span>
+        </span>
+      </a>
     </section>
     <section class="grid2">
       <div>
@@ -146,7 +149,7 @@
   </main>
 
   <footer class="foot">
-    <a href="index.html">Elektrolab</a> · a 3D electrostatics study app ·
+    <a href="./?from=case">Elektrolab</a> · a 3D electrostatics study app ·
     <a href="https://github.com/QuanDevCZ/elektrolab">GitHub</a>
   </footer>
 </body>

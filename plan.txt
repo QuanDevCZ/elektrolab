@@ -404,3 +404,4 @@ when the user says so.
   points to case-study.html with a new thumbnail (portfolio repo, uncommitted). npm test 84/84.
   Note: local `npx serve` 301-redirects index.html and drops the query, so links use ./?kapitola=…
 - 2026-11-22: Feedback section, its loader script, .quotes styles and testimonials.json removed at the user's request.
+- 2026-11-22: "Try it here" iframe replaced by a "Want to try it?" card (assets/try.png) opening the full app. Case-study links add ?from=case; the app then shows "← Back to case study" in the top bar (hidden otherwise). 84/84 tests.
