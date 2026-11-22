@@ -47,7 +47,6 @@
         <li><b>5</b> chapters, in the order we were taught</li>
       </ul>
     </section>
-
     <section id="try">
       <h2>Try it here</h2>
       <p>This is the real app, running below. It's in Czech because it was made for my class. Drag the red
@@ -57,7 +56,6 @@
       </div>
       <p class="hint">Small screen? <a href="./?kapitola=coulomb">Open it full screen</a>.</p>
     </section>
-
     <section class="grid2">
       <div>
         <h2>The problem</h2>
@@ -76,7 +74,6 @@
         </ul>
       </div>
     </section>
-
     <section>
       <h2>How it works: three levels of depth</h2>
       <div class="steps">
@@ -107,7 +104,6 @@
         <figure class="shot"><img src="assets/guide-prace.png" width="1440" height="900" alt="Moving a charge from A to B between two plates along a staircase path" loading="lazy"><figcaption>Work in a field: a different path, the same work.</figcaption></figure>
       </div>
     </section>
-
     <section class="grid2">
       <div>
         <h2>Accuracy is the feature</h2>
@@ -134,7 +130,6 @@
         <figure class="shot phone"><img src="assets/phone.png" width="390" height="844" alt="The app on a phone screen: chapter dots, the 3D scene and controls stacked" loading="lazy"><figcaption>On a phone, the page stacks: scene first, then controls and theory.</figcaption></figure>
       </div>
     </section>
-
     <section class="mine">
       <h2>What I learned</h2>
       <p><b>The hardest part was making it clear.</b> Some classmates got it right away. Others opened it and
@@ -148,39 +143,11 @@
         but left out the colours. The colours mean something, so their drawings were wrong. Next time I'd put
         what the colours mean right in the scene, where nobody can miss it.</p>
     </section>
-
-    <section>
-      <h2>Feedback</h2>
-      <div id="testimonials" class="quotes"></div>
-    </section>
   </main>
 
   <footer class="foot">
     <a href="index.html">Elektrolab</a> · a 3D electrostatics study app ·
     <a href="https://github.com/QuanDevCZ/elektrolab">GitHub</a>
   </footer>
-
-  <script>
-    // Feedback is loaded from testimonials.json: [{ "text": "…", "author": "…", "role": "classmate" }]
-    // Real feedback only. Never invent quotes.
-    (async () => {
-      const box = document.getElementById('testimonials');
-      let items = [];
-      try { items = await (await fetch('testimonials.json', { cache: 'no-store' })).json(); } catch { items = []; }
-      if (!Array.isArray(items) || items.length === 0) {
-        box.innerHTML = '<p class="empty">Feedback from my classmates and teacher will go here.</p>';
-        return;
-      }
-      for (const t of items) {
-        const fig = document.createElement('figure');
-        const q = document.createElement('blockquote');
-        q.textContent = t.text;
-        const cap = document.createElement('figcaption');
-        cap.textContent = [t.author, t.role].filter(Boolean).join(' · ');
-        fig.append(q, cap);
-        box.append(fig);
-      }
-    })();
-  </script>
 </body>
 </html>

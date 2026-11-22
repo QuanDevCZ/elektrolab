@@ -57,13 +57,7 @@ code { font: 14px var(--mono); background: var(--paper-2); padding: 1px 5px; bor
 .stat { font: 16px var(--mono); border-left: 3px solid var(--select); padding-left: 12px; }
 .stat b { font-size: 22px; }
 
-.todo, .empty { color: var(--muted); font-style: italic; border: 1px dashed var(--rule); border-radius: 8px; padding: 14px 16px; }
 
-.quotes { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
-.quotes figure { margin: 0; background: #fbf8f1; border: 1px solid var(--rule); border-radius: 10px; padding: 18px; }
-.quotes blockquote { margin: 0 0 10px; font: 17px/1.5 var(--serif); }
-.quotes figcaption { font-size: 13px; color: var(--muted); }
-.quotes .empty { grid-column: 1 / -1; }
 
 .foot { max-width: 1120px; margin: 0 auto; padding: 24px var(--gutter) 40px; font-size: 13px; color: var(--muted); }
 

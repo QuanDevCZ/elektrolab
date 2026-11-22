@@ -403,3 +403,4 @@ when the user says so.
   phone.png, README English on top, OG meta in index.html, pripadova-studie.html deleted. Portfolio card
   points to case-study.html with a new thumbnail (portfolio repo, uncommitted). npm test 84/84.
   Note: local `npx serve` 301-redirects index.html and drops the query, so links use ./?kapitola=…
+- 2026-11-22: Feedback section, its loader script, .quotes styles and testimonials.json removed at the user's request.
