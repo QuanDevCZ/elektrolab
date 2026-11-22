@@ -75,8 +75,6 @@ code { font: 14px var(--mono); background: var(--paper-2); padding: 1px 5px; bor
 .facts { list-style: none; padding: 0; margin: 28px 0 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
 .facts li { margin: 0; font-size: 14px; color: var(--ink-2); border-top: 2px solid var(--select); padding-top: 10px; }
 .facts b { display: block; font: 600 30px/1.1 var(--serif); color: var(--ink); }
-.shot.phone { max-width: 220px; margin-top: 28px; }
-.shot.phone img { border-radius: 18px; }
 
 @media (max-width: 760px) {
   .facts { grid-template-columns: 1fr 1fr; }
