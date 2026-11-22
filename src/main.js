@@ -608,7 +608,15 @@ function setMode(mode, { keepScene = false } = {}) {
     // Přepnutí tématu v laboratoři = vždy čistá výchozí scéna daného tématu na stole 4 m.
     // Dřív se scéna resetovala jen při návratu z práce / náboje, takže desky z „homogenní“
     // nebo stůl 40 cm z příkladu zůstaly i v Coulombově zákoně (a bez nábojů nebyly šipky).
-    if (mode === 'pole') { if (state.scale !== 4) setScale(4, { rescale: false }); loadFieldScene('dipol'); } else defaultPair();
+    if (mode === 'pole') {
+      if (state.scale !== 4) setScale(4, { rescale: false });
+      loadFieldScene('dipol');
+      setLineMode('space'); // pole bez siločar nedává smysl (Coulomb je vypíná)
+    } else {
+      defaultPair();
+      // Coulombův zákon vypadá stejně jako v Teorii: šipky síly, bez siločar (ty zakrývaly šipky).
+      applyDisplay(pageById('coulomb').display);
+    }
   }
   invalidate();
 }
@@ -1170,6 +1178,7 @@ defaultPair();
     document.body.dataset.view = 'lab';
     document.querySelectorAll('[data-viewmode]').forEach((b) => b.classList.toggle('on', b.dataset.viewmode === 'lab'));
     setMode(lab);
+    if (lab === 'coulomb') applyDisplay(pageById('coulomb').display); // stejně jako v Teorii
     if (lab === 'pole' && !state.fieldScene) loadFieldScene('dipol');
   } else {
     story.start(params.get('kapitola') || 'naboj');

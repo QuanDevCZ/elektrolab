@@ -409,3 +409,4 @@ when the user says so.
 - 2026-11-22: phone screenshot removed from the case study at the user's request (assets/phone.png deleted).
 - 2026-11-22: the ?from=case back link was dropped (the app must look the same however it is opened). The top bar now always shows a "Case study" link under the name, in place of the "Elektrostatika · 3D" subtitle. 84/84 tests.
 - 2026-11-22: lab bug fixed — switching topic tabs (Coulomb / pole) now always loads that topic's default scene on the 4 m table and resets the camera. Before, plates from "homogenní", the 40 cm table and the zoom carried over. Checked in Chrome by clicking the tabs; 84/84 tests.
+- 2026-11-22: lab Coulomb looks like Teorie: Obr. 1 gets 85 % of the column height on screens > 720 px (graphs scroll below; before ~320 px on a laptop, so arrows looked missing) and opens with force arrows on, field lines off (Teorie's coulomb display). Pole tab turns field lines back on. Checked in Chrome; 84/84 tests.

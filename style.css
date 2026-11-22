@@ -672,3 +672,11 @@ body[data-mode="relativita"] .legend { display: none; }
   .g-nav { order: 9; }
   .g-lab { order: 10; margin: 0 0 24px; }
 }
+
+/* Laboratoř (2026-11-22): Obr. 1 stejně velký jako v Teorii. Dřív dostal jen zbytek sloupce
+   po grafech (na notebooku ~320 px) a scéna i šipky síly byly drobné. Teď má 85 % výšky sloupce,
+   grafy a popisek se posunou pod něj (sloupec se posouvá, horní okraj grafů je vidět). */
+@media (min-width: 721px) {
+  body[data-view="lab"] .figure { overflow-y: auto; }
+  body[data-view="lab"] .viewport { flex: 0 0 85%; min-height: 360px; }
+}
