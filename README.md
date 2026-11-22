@@ -1,5 +1,34 @@
 # Elektrolab
 
+**A 3D electrostatics lab built to match my physics class. Every example from our notebook is an automated test.**
+
+[Open the app](https://quandevcz.github.io/elektrolab/) · [Read the case study](https://quandevcz.github.io/elektrolab/case-study.html)
+
+![Elektrolab lab view: work in a uniform field between two charged plates](assets/lab-prace.png)
+
+I built Elektrolab for my class at a Czech gymnázium. Drag charges around and the force arrows, field
+lines and numbers update live. The app is in Czech on purpose: it uses the exact symbols, formulas and
+examples our teacher used, so it can be shown in class.
+
+- **Theory:** 5 chapters in lesson order (charge and Coulomb's law, permittivity, electric field,
+  field strength, work in a field). Each one has the formula with live numbers from the scene.
+- **Notebook examples:** 15 tasks from class, rebuilt as scenes. The solution stays hidden until you click.
+- **Lab:** every control, graphs of force and field strength, an analog gauge, a setup table.
+- **Accuracy:** each notebook example is a test that must round to the notebook's answer. 84 tests, 0 failing.
+
+**Tech:** plain HTML, CSS and JavaScript, no build, no dependencies. Three.js r160 from a CDN, hand-made
+canvas graphs and an SVG gauge. All physics lives in `src/core/` (no DOM), tested with `node --test`.
+Works with a mouse or a finger. Built with Claude Code.
+
+```bash
+npm start      # http://localhost:4340
+npm test       # physics checked against the notebook examples
+```
+
+---
+
+## Česky
+
 Interaktivní 3D elektrostatika pro gymnázium — fyzika se **ukazuje**, ne jen píše.
 
 **Živě:** https://quandevcz.github.io/elektrolab/

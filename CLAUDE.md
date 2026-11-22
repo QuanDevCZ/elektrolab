@@ -5,6 +5,11 @@ the teacher**. Zero deps, no build: `index.html` + ES modules, Three.js r160 via
 `npm test` (node --test) · `npm start` → http://localhost:4340. Hosted later on GitHub Pages.
 The full stage plan is in `plan.txt` (keep it current).
 
+**Portfolio-facing (2026-11-22):** `case-study.html` (+ `case.css`, `assets/`, `testimonials.json`)
+is in **English** for the portfolio; the portfolio card links there. The app itself stays Czech.
+README is English on top, Czech below. Case-study copy follows `~/.claude/how-i-write.md` (no em
+dashes); real quotes only in `testimonials.json`. Keep its numbers (test count, examples) true.
+
 ## The rule that matters most: match the class
 
 Everything shown must match what was taught. The sources are the lesson PDFs 02–06 in

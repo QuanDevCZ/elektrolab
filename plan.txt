@@ -370,3 +370,36 @@ in AU. New guide page after "coulomb", chapter 1 part 3/3, marked "z hodiny, mim
 - 2026-11-01 (4): shipped. Repo github.com/QuanDevCZ/elektrolab, live at
   https://quandevcz.github.io/elektrolab/ (GitHub Pages, main / root). lessons/ is gitignored (teacher PDFs
   stay local). AI tutor chatbot (Groq + Cloudflare Worker) was planned and shelved by the user.
+
+========================================================================
+## Stage 4 — portfolio showcase (2026-11-22)
+
+Context: the app is shipped but Czech-only and built for the class; the portfolio card
+(portfolio/index.html) dropped English-speaking visitors straight into it. Decisions (asked
+2026-11-22): portfolio visitors land on an English case-study page; the app stays Czech (matching
+the class notes is the story); "What I learned" is written from a short interview with the user.
+Triage: medium · no new physics, npm test stays 84/84 · branch `showcase` (main = GitHub Pages).
+
+Steps:
+1. Save this plan here.
+2. Fresh screenshots (old ones predate the Teorie rename / legend removal) with headless Chrome
+   from npm start (:4340) via ?kapitola= / ?lab= URLs: hero (lab práce), náboj, coulomb, intenzita,
+   práce, one 390 px phone shot; assets/og.png 1200×630.
+3. English case-study.html built on pripadova-studie.html + case.css (Czech page deleted, git keeps
+   it): hero + "Open the app", live app in an iframe ("Try it here"), problem → goal → how it works,
+   accuracy as a feature (every sešit example is a test, real npm test count), tech + repo link,
+   What I learned, testimonials loader (English empty state, no invented quotes), OG/Twitter meta.
+4. Interview the user (4 questions), write "What I learned" in their voice (how-i-write.md),
+   /slop-check the copy.
+5. README: English section on top, Czech list kept below.
+6. index.html: OG/Twitter meta only, no UI change ("O projektu" link stays removed).
+7. Portfolio repo: Elektrolab card → case-study.html, new thumbnail, sharper one-liner.
+8. CLAUDE.md: case study is English and portfolio-facing; app stays Czech.
+Verification: npm test 84/84; Chrome desktop + 390 px (case study, iframe works, no horizontal
+scroll, no console errors); OG meta + og.png; portfolio card opens the case study. Commit/push only
+when the user says so.
+- Status 2026-11-22: Stage 4 built on branch `showcase`, not committed. case-study.html (English, live
+  app iframe, What I learned from the user's interview, slop-checked), fresh screenshots + og.png +
+  phone.png, README English on top, OG meta in index.html, pripadova-studie.html deleted. Portfolio card
+  points to case-study.html with a new thumbnail (portfolio repo, uncommitted). npm test 84/84.
+  Note: local `npx serve` 301-redirects index.html and drops the query, so links use ./?kapitola=…

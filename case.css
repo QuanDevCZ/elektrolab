@@ -1,4 +1,4 @@
-/* Elektrolab — případová studie. Stejné barvy a písma jako aplikace (papír + tmavé obrázky). */
+/* Elektrolab case study. Same colours and fonts as the app (paper panels + dark scenes). */
 
 :root {
   --paper: #f3eee3;
@@ -72,4 +72,22 @@ code { font: 14px var(--mono); background: var(--paper-2); padding: 1px 5px; bor
   .grid2 { gap: 0; }
   .grid2 > div + div { margin-top: 32px; }
   section { padding: 36px 0; }
+}
+
+/* Portfolio showcase additions (2026-11-22) */
+.links { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 28px; }
+.ghost { font: 600 14px var(--sans); text-decoration: none; border: 1px solid var(--ink); padding: 8px 15px; border-radius: 6px; }
+.open:hover, .ghost:hover { opacity: .85; }
+.facts { list-style: none; padding: 0; margin: 28px 0 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.facts li { margin: 0; font-size: 14px; color: var(--ink-2); border-top: 2px solid var(--select); padding-top: 10px; }
+.facts b { display: block; font: 600 30px/1.1 var(--serif); color: var(--ink); }
+.demo { border-radius: 10px; overflow: hidden; border: 1px solid var(--rule); background: var(--vp); box-shadow: 0 10px 30px -18px #0007; }
+.demo iframe { display: block; width: 100%; height: min(760px, 80vh); border: 0; }
+.hint { font-size: 13px; color: var(--muted); margin-top: 10px; }
+.shot.phone { max-width: 220px; margin-top: 28px; }
+.shot.phone img { border-radius: 18px; }
+
+@media (max-width: 760px) {
+  .facts { grid-template-columns: 1fr 1fr; }
+  .demo iframe { height: 640px; }
 }

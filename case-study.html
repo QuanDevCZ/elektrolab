@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Elektrolab: case study</title>
+  <meta name="description" content="A 3D electrostatics lab I built for my physics class. Every example from our notebook is an automated test, so every number on screen matches what we learned.">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Elektrolab: 3D electrostatics, built to match my physics class">
+  <meta property="og:description" content="Drag charges, watch field lines and forces update live. Every notebook example is a passing test.">
+  <meta property="og:url" content="https://quandevcz.github.io/elektrolab/case-study.html">
+  <meta property="og:image" content="https://quandevcz.github.io/elektrolab/assets/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://quandevcz.github.io/elektrolab/assets/og.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="case.css">
+</head>
+<body>
+  <header class="top">
+    <a class="brand" href="index.html">Elektrolab</a>
+    <a class="open" href="index.html">Open the app →</a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="kicker">Case study · school project · Czechia, 2026</p>
+      <h1>Electrostatics you can see and move with your finger</h1>
+      <p class="lead">Elektrolab is a 3D study app I built for my physics class at gymnázium. Charges, field
+        lines, field strength and work in a field. Everything that's a formula in our notebook is a scene
+        here that you can play with. And every number matches the notebook.</p>
+      <p class="links">
+        <a class="open" href="index.html">Open the app →</a>
+        <a class="ghost" href="https://github.com/QuanDevCZ/elektrolab">Source on GitHub</a>
+      </p>
+      <figure class="shot wide">
+        <img src="assets/lab-prace.png" width="1440" height="900" alt="Lab view: work in a uniform field between two charged plates, with a voltmeter and a graph of work along the path">
+        <figcaption>Lab view, work in a field: a path from A to B, a voltmeter, and a live graph of work along the path.</figcaption>
+      </figure>
+      <ul class="facts">
+        <li><b>15</b> notebook examples rebuilt as scenes</li>
+        <li><b>84</b> automated tests, 0 failing</li>
+        <li><b>0</b> dependencies, no build step</li>
+        <li><b>5</b> chapters, in the order we were taught</li>
+      </ul>
+    </section>
+
+    <section id="try">
+      <h2>Try it here</h2>
+      <p>This is the real app, running below. It's in Czech because it was made for my class. Drag the red
+        and blue balls and watch the force arrows and the numbers change.</p>
+      <div class="demo">
+        <iframe src="./?kapitola=coulomb" title="Elektrolab app, Coulomb's law chapter" loading="lazy"></iframe>
+      </div>
+      <p class="hint">Small screen? <a href="./?kapitola=coulomb">Open it full screen</a>.</p>
+    </section>
+
+    <section class="grid2">
+      <div>
+        <h2>The problem</h2>
+        <p>In our notebook, electrostatics is formulas and a few flat pictures. Field lines, field strength,
+          or the fact that work in a field doesn't depend on the path are hard to imagine on paper.</p>
+        <p>My first version showed all of it, but it put fifteen controls and two panels of numbers on the
+          screen at once. Nobody knew where to look.</p>
+      </div>
+      <div>
+        <h2>The goal</h2>
+        <ul>
+          <li>Theory that belongs to the picture: what it is, the formula, and under it the numbers from the
+            scene.</li>
+          <li>Depth only when you ask for it: substitutions, graphs, measuring instruments.</li>
+          <li>Exactly like class: same symbols, same formulas, same examples as the notebook.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>How it works: three levels of depth</h2>
+      <div class="steps">
+        <article>
+          <span class="n">1</span>
+          <h3>Theory</h3>
+          <p>Five chapters in lesson order: charge and Coulomb's law, permittivity, electric field, field
+            strength, work in a field. Each one has a short "what it is", the formula, and at most two
+            controls.</p>
+        </article>
+        <article>
+          <span class="n">2</span>
+          <h3>Notebook examples</h3>
+          <p>The task from class, with the solution hidden until you click. One button builds the example in
+            the 3D scene, and the formula above it recalculates with the scene's numbers.</p>
+        </article>
+        <article>
+          <span class="n">3</span>
+          <h3>Lab</h3>
+          <p>Every control at once: graphs of force and field strength, an analog gauge (force meter, field
+            meter, voltmeter), and a table of the setup.</p>
+        </article>
+      </div>
+      <div class="shots">
+        <figure class="shot"><img src="assets/guide-naboj.png" width="1440" height="900" alt="Rubbing an ebonite rod with a cloth: electrons move to the rod" loading="lazy"><figcaption>What is charge? Electrons move from the cloth to the rod. The total stays zero.</figcaption></figure>
+        <figure class="shot"><img src="assets/guide-coulomb.png" width="1440" height="900" alt="Two charges with force arrows and the formula with live numbers" loading="lazy"><figcaption>Coulomb's law: half the distance, four times the force. The formula fills in from the scene.</figcaption></figure>
+        <figure class="shot"><img src="assets/guide-intenzita.png" width="1440" height="900" alt="Field vectors coloured by strength and a draggable probe point" loading="lazy"><figcaption>Field strength is shown by colour, not arrow length, the same way our lesson shows it.</figcaption></figure>
+        <figure class="shot"><img src="assets/guide-prace.png" width="1440" height="900" alt="Moving a charge from A to B between two plates along a staircase path" loading="lazy"><figcaption>Work in a field: a different path, the same work.</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="grid2">
+      <div>
+        <h2>Accuracy is the feature</h2>
+        <p>The one rule of the project: everything must match what we were taught. The symbols from the board,
+          Coulomb's law in the exact form the teacher wrote, Czech number formatting, the units we use.</p>
+        <p>Every notebook example is also an automated test. After rounding, the app has to show exactly the
+          answer from the notebook: 3.6·10⁶ N for lesson 2, task 1; 4.9·10⁻³ N for the same charges in
+          ethanol; 10⁻⁴ J for the work in lesson 5, task 6. If I break the physics, the tests fail before
+          anyone in class sees it.</p>
+        <p class="stat"><b>84</b> automated tests · <b>0</b> failing</p>
+      </div>
+      <div>
+        <h2>How it's built</h2>
+        <ul>
+          <li>Plain HTML, CSS and JavaScript. No framework, no build, nothing to install.</li>
+          <li>Three.js for the 3D scene. Custom canvas graphs and an SVG gauge.</li>
+          <li>All physics lives in <code>src/core/</code>, separate from the drawing code, and is tested in
+            Node with <code>node --test</code>.</li>
+          <li>Field lines are traced step by step along the field (Runge–Kutta), from + to −.</li>
+          <li>Works on a laptop and a phone, with a mouse or a finger.</li>
+          <li>Built with Claude Code. I set the rules, checked every result against the notebook, and
+            decided what stays.</li>
+        </ul>
+        <figure class="shot phone"><img src="assets/phone.png" width="390" height="844" alt="The app on a phone screen: chapter dots, the 3D scene and controls stacked" loading="lazy"><figcaption>On a phone, the page stacks: scene first, then controls and theory.</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="mine">
+      <h2>What I learned</h2>
+      <p><b>The hardest part was making it clear.</b> Some classmates got it right away. Others opened it and
+        had no idea what was going on.</p>
+      <p><b>People studied from it.</b> The class liked it. I think one classmate studied from Elektrolab and got
+        a good mark for the first time. I'm not sure, though.</p>
+      <p><b>AI can build more than I expected.</b> I didn't think it could get to 3D charges and field lines that
+        move when you drag them. Watching Claude Opus build that showed me how much one person can make with
+        AI now.</p>
+      <p><b>What I'd change: the visuals.</b> A few classmates copied a 3D picture from the app into the exam
+        but left out the colours. The colours mean something, so their drawings were wrong. Next time I'd put
+        what the colours mean right in the scene, where nobody can miss it.</p>
+    </section>
+
+    <section>
+      <h2>Feedback</h2>
+      <div id="testimonials" class="quotes"></div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <a href="index.html">Elektrolab</a> · a 3D electrostatics study app ·
+    <a href="https://github.com/QuanDevCZ/elektrolab">GitHub</a>
+  </footer>
+
+  <script>
+    // Feedback is loaded from testimonials.json: [{ "text": "…", "author": "…", "role": "classmate" }]
+    // Real feedback only. Never invent quotes.
+    (async () => {
+      const box = document.getElementById('testimonials');
+      let items = [];
+      try { items = await (await fetch('testimonials.json', { cache: 'no-store' })).json(); } catch { items = []; }
+      if (!Array.isArray(items) || items.length === 0) {
+        box.innerHTML = '<p class="empty">Feedback from my classmates and teacher will go here.</p>';
+        return;
+      }
+      for (const t of items) {
+        const fig = document.createElement('figure');
+        const q = document.createElement('blockquote');
+        q.textContent = t.text;
+        const cap = document.createElement('figcaption');
+        cap.textContent = [t.author, t.role].filter(Boolean).join(' · ');
+        fig.append(q, cap);
+        box.append(fig);
+      }
+    })();
+  </script>
+</body>
+</html>
