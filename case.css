@@ -18,7 +18,7 @@
 * { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
 body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.6 var(--sans); }
-img { max-width: 100%; display: block; }
+img { max-width: 100%; height: auto; display: block; }
 a { color: inherit; }
 
 .top {
@@ -47,7 +47,7 @@ code { font: 14px var(--mono); background: var(--paper-2); padding: 1px 5px; bor
 .shot { margin: 0; }
 .shot img { border-radius: 10px; border: 1px solid var(--rule); box-shadow: 0 10px 30px -18px #0007; background: var(--vp); }
 .shot figcaption { font-size: 13px; color: var(--muted); margin-top: 8px; }
-.shots { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 32px; }
+.shots { display: grid; grid-template-columns: 1fr; gap: 40px; margin-top: 32px; }
 
 .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 .steps article { background: #fbf8f1; border: 1px solid var(--rule); border-radius: 10px; padding: 18px; }
