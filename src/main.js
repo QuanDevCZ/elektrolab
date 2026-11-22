@@ -587,8 +587,10 @@ function setMode(mode, { keepScene = false } = {}) {
   // výchozí zobrazení: v režimu pole jsou vidět vektory intenzity
   setVectorMode(mode === 'pole' ? 'plane' : 'off');
   if (state.example && state.example.mode !== mode) clearExample();
-  if (from === 'prace') {
-    state.work.example = null;
+  if (from === 'prace') state.work.example = null;
+  // Nové téma = kamera zpět do výchozího pohledu (jinak zůstane přiblížení z minulého tématu).
+  // Práce v poli si nastaví vlastní pohled v enterWork().
+  if (mode !== 'prace' && (from === 'prace' || !keepScene)) {
     currentView = 'sikmo';
     document.querySelectorAll('.views [data-view]').forEach((x) => x.classList.toggle('on', x.dataset.view === currentView));
     scene.setView(currentView);
@@ -602,8 +604,10 @@ function setMode(mode, { keepScene = false } = {}) {
     if (state.scale !== 4) setScale(4, { rescale: false });
     state.charges = []; state.plates = []; state.selectedId = null;
     setFieldSceneButton(null);
-  } else if (!keepScene && (from === 'prace' || from === 'naboj' || from === 'relativita')) {
-    // ze scény s deskami / tyčí se vracíme do běžné scény daného režimu
+  } else if (!keepScene) {
+    // Přepnutí tématu v laboratoři = vždy čistá výchozí scéna daného tématu na stole 4 m.
+    // Dřív se scéna resetovala jen při návratu z práce / náboje, takže desky z „homogenní“
+    // nebo stůl 40 cm z příkladu zůstaly i v Coulombově zákoně (a bez nábojů nebyly šipky).
     if (mode === 'pole') { if (state.scale !== 4) setScale(4, { rescale: false }); loadFieldScene('dipol'); } else defaultPair();
   }
   invalidate();
