@@ -407,3 +407,4 @@ when the user says so.
 - 2026-11-22: "Try it here" iframe replaced by a "Want to try it?" card (assets/try.png) opening the full app. Case-study links add ?from=case; the app then shows "← Back to case study" in the top bar (hidden otherwise). 84/84 tests.
 - 2026-11-22: case study images keep their aspect ratio (img height: auto); "How it works" screenshots stacked one per row.
 - 2026-11-22: phone screenshot removed from the case study at the user's request (assets/phone.png deleted).
+- 2026-11-22: the ?from=case back link was dropped (the app must look the same however it is opened). The top bar now always shows a "Case study" link under the name, in place of the "Elektrostatika · 3D" subtitle. 84/84 tests.

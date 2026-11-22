@@ -1160,12 +1160,6 @@ setScale(4, { rescale: false });
 defaultPair();
 {
   const params = new URLSearchParams(location.search);
-  // Návštěvník z anglické případové studie (?from=case) dostane odkaz zpět. Třída ho nevidí.
-  if (params.get('from') === 'case') {
-    const back = document.querySelector('.backlink');
-    if (back) back.hidden = false;
-    document.body.classList.add('from-case');
-  }
   const lab = params.get('lab');
   if (lab && ['coulomb', 'pole', 'prace'].includes(lab)) {
     state.view = 'lab';

@@ -9,8 +9,8 @@ The full stage plan is in `plan.txt` (keep it current).
 is in **English** for the portfolio; the portfolio card links there. The app itself stays Czech.
 README is English on top, Czech below. Case-study copy follows `~/.claude/how-i-write.md` (no em
 dashes). The Feedback section was removed at the user's request (2026-11-22). Keep its numbers (test count, examples) true.
-Links from the case study open the app with `?from=case`; only then the app shows an English
-"← Back to case study" link (`.backlink`, unhidden in `main.js`). The class never sees it.
+The app top bar always has a "Case study" link under the name (`.caselink`, replaced the "Elektrostatika · 3D"
+subtitle; the user asked for it on 2026-11-22, reversing the 2026-10-31 removal of "O projektu").
 
 ## The rule that matters most: match the class
 
